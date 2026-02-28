@@ -28,4 +28,13 @@ public class ChemisesBlousesStepDef  {
 		CHB.verifpdt(name);
 
 }
+	
+	@Then("l utilisateur est rediriger vers la page {string}")
+	public void l_utilisateur_est_rediriger_vers_la_page(String Produit) {
+		ChemisesBlouses CHB= new ChemisesBlouses();
+		Config.attente(10);
+		CHB.verifpdt(Produit);
+		CHB.clickOnProduct(Produit);
+	}
+
 	}

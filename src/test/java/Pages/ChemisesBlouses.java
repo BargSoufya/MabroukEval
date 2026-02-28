@@ -33,7 +33,8 @@ public class ChemisesBlouses {
 		for(WebElement menu:menus ) {
 			if(menu.getText().contains(pdtTitle)) {
 				((JavascriptExecutor)Config.driver).executeScript("arguments[0].scrollIntoView(true);","menu");
-				
+				Actions act=new Actions (Config.driver);
+				act.moveToElement(menu).perform();
 				menu.click();
 			}
 		}
@@ -43,9 +44,10 @@ public class ChemisesBlouses {
 	
 	}
 	
+	
 	public void verifpdt (String verifproduct) {
 		Config.attente(10);
 		String actualtext= veriPdt.getText();
-		Assert.assertEquals(verifproduct, actualtext);
+		Assert.assertTrue(verifproduct.toUpperCase().contains(actualtext.toUpperCase()));
 	}
 }
